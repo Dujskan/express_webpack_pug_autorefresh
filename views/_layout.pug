@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='main.css')
+  body
+    block content
+
+    script(src="main-bundle.js")
+    script(src=(process.env.BROWSER_REFRESH_URL))
