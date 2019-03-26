@@ -7,4 +7,5 @@ html
     block content
 
     script(src="main-bundle.js")
-    script(src=(process.env.BROWSER_REFRESH_URL))
+    if(process.env.NODE_ENV === 'development')
+      script(src=(process.env.BROWSER_REFRESH_URL))

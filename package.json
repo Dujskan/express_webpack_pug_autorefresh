@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "browser-refresh ./bin/www",
-    "build": "webpack --config=config/webpack-dev.js"
+    "start": "SET NODE_ENV=production& node ./bin/www",
+    "dev" : "SET NODE_ENV=development& browser-refresh ./bin/www",
+    "build": "SET NODE_ENV=production& webpack --config=config/webpack-dev.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
