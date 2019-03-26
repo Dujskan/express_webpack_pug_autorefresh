@@ -34,4 +34,3 @@ Please [open an issue](https://github.com/Dujskan/express_webpack_pug_autorefres
 ## Contributing
 
 Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/Dujskan/express_webpack_pug_autorefresh/compare/).
-```
