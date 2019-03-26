@@ -5,10 +5,10 @@ const path = require('path')
 const rootConfig = require('../root_config')
 
 module.exports = {
-  entry: './public/app.js',
+  entry: path.join(rootConfig.clientPath, 'app.js'),
   output: {
     filename: '[name]-bundle.js',
-    path: path.join(rootConfig.root, 'dist')
+    path: path.join(rootConfig.rootPath, 'dist')
   },
   mode: 'development',
   devServer: {

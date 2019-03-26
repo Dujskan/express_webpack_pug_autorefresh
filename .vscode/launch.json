@@ -7,8 +7,11 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "new_start",
+            "name": "boilerplate",
             "program": "${workspaceFolder}/bin/www",
+            "env": {
+                "NODE_ENV" : "development"
+            }
         }
     ]
 }

@@ -1,32 +1,27 @@
 const createError = require('http-errors');
 const express = require('express');
-const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const viewEngineSetup = require('./config/view_engine-setup')
+const root_config = require('./root_config.js')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
 
-// view engine setup
 viewEngineSetup(app)
 
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
+  src: root_config.clientPath,
+  dest: root_config.clientPath,
   indentedSyntax: true, // true = .sass and false = .scss
-  sourceMap: false,
-  outputStyle: 'compressed',
-
+  sourceMap: false, // no sourceMap needed, we set it with webpack.
 }));
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(root_config.distPath));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -40,7 +35,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === root_config.staticVariables.development ? err : {};
 
   // render the error page
   res.status(err.status || 500);
